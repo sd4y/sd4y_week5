@@ -1,6 +1,4 @@
 #include "tList.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 void init_List(tList *pList)
 {
@@ -12,14 +10,16 @@ void init_List(tList *pList)
 void release_List(tList* pList)
 {
     tNode* deleteNode = pList->pTail;
+    tNode* nextNode;
     while (deleteNode)
     {
-        pList->pTail = pList->pTail->pPrev;
-        free(deleteNode);        
+        nextNode = deleteNode->pNext;
+        free(deleteNode); 
+        deleteNode = nextNode;
     }
-    pList->iCount = 0;
     pList->pHead = NULL;
     pList->pTail = NULL;
+    pList->iCount = 0;
 }
 
 void push_back(tList* pList, const int data)
@@ -64,6 +64,12 @@ void push_front(tList* pList, const int data)
     ++pList->iCount;
 }
 
+void insert(tList* pList, const int data)
+{
+
+
+}
+
 void erase(tList* pList, const int data)
 {
     tNode* target = pList->pHead;
@@ -71,6 +77,9 @@ void erase(tList* pList, const int data)
     if (pList->iCount == 1)
     {
         free(target);
+        pList->pHead = NULL;
+        pList->pTail = NULL;
+        pList->iCount = 0;
         return;
     }
 
@@ -104,7 +113,7 @@ void erase(tList* pList, const int data)
     }
 }
 
-int size(const tList *pList)
+int listSize(tList* pList)
 {
     return pList->iCount;
 }
