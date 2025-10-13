@@ -21,6 +21,6 @@ void postOrderIterativeS1(BSTNode *root){
 		printf("트리가 비어있습니다.\n");
 		return;
 	}
+ 
 
-	
 }

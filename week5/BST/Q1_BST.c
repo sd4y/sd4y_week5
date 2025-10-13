@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #define BUFFER_SIZE 1024
-
+ 
 typedef struct _bstnode{
 	int item;
 	struct _bstnode *left;
@@ -40,7 +40,7 @@ QueueNode* pop(Queue* q){
 	QueueNode* temp = q->head;
 
 	if (temp->nextPtr == NULL) q->tail = NULL;
-	
+
 	q->head = temp->nextPtr;
 	return temp;
 }
