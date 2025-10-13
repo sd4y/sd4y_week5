@@ -48,7 +48,7 @@ void preOrderIterative(BSTNode *root){
 	Stack s = {NULL};
 	insert(&s, root);
 
-	while( s.top != NULL){
+	while(s.top != NULL){
 		StackNode *sNode = pop(&s);
 		BSTNode *curr = sNode->data;
 		printf("%d ", curr->item);
