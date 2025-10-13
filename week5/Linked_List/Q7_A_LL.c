@@ -11,7 +11,19 @@ typedef struct _linkedlist{
 	ListNode *head;
 } LinkedList;
 
-void RecursiveReverse(ListNode **ptrHead)
+void RecursiveReverse(ListNode** ptrHead)
 {
 	/* add your code here */
+	if (*ptrHead == NULL || (*ptrHead)->next == NULL )
+		return;
+
+	ListNode* Head = *ptrHead;
+	ListNode* Rest = Head->next;
+
+	RecursiveReverse(&Rest);
+
+	Head->next->next = Head;
+	Head->next = NULL;
+
+	*ptrHead = Rest;
 }
